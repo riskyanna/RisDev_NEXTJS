@@ -4,6 +4,9 @@ import { Search } from 'lucide-react';
 export default function Hero() {
   return (
     <section className="relative bg-white pt-10 pb-20 px-6 overflow-hidden">
+      {/* Grid Pattern Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-0"></div>
+
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="space-y-8">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
@@ -11,39 +14,58 @@ export default function Hero() {
           </h1>
           
           <div className="space-y-2">
-            <div className="inline-block px-3 py-1 bg-red-100 text-red-500 text-xs font-semibold rounded-full">
-              Diskon Domain Rp145.000
+            <div className="inline-block px-3 py-1 bg-red-100 text-red-500 text-xs font-semibold rounded-full animate-pulse">
+              Promo Terbatas: Diskon Domain Rp145.000
             </div>
             <p className="text-gray-600 text-lg">
               Mulai dari <span className="font-bold text-gray-900">Rp97.000</span>/Tahun
             </p>
           </div>
 
-          <div className="flex w-full max-w-md bg-white border border-gray-200 rounded-full p-1.5 shadow-sm">
+          <div className="flex w-full max-w-md bg-white border border-gray-200 rounded-full p-1.5 shadow-lg shadow-blue-100 focus-within:ring-2 focus-within:ring-blue-100 transition-all">
             <div className="flex-1 flex items-center px-4">
               <Search className="w-5 h-5 text-gray-400 mr-2" />
               <input 
                 type="text" 
-                placeholder="Nama domain kamu..." 
-                className="w-full outline-none text-gray-700 placeholder-gray-400 bg-transparent"
+                placeholder="Nama domain impian kamu..." 
+                className="w-full outline-none text-gray-700 placeholder-gray-400 bg-transparent font-medium"
               />
             </div>
-            <button className="px-6 py-3 bg-orange-400 text-white font-medium rounded-full hover:bg-orange-500 transition-colors cursor-pointer">
+            <button className="px-6 py-3 bg-orange-500 text-white font-bold rounded-full hover:bg-orange-600 transition-colors cursor-pointer shadow-md">
               Cari Domain
             </button>
           </div>
+          
+          <div className="flex items-center gap-4 text-sm text-gray-500">
+             <div className="flex -space-x-2">
+                 {[1,2,3,4].map((i) => (
+                     <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px] font-bold text-gray-600 overflow-hidden">
+                        <Image src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}`} alt="user" width={32} height={32} className="w-full h-full object-cover" />
+                     </div>
+                 ))}
+             </div>
+             <p>Bergabung dengan <span className="font-bold text-gray-900">12.000+</span> pebisnis lainnya</p>
+          </div>
         </div>
 
-        <div className="relative h-[400px] md:h-[500px] w-full">
-            <div className="absolute inset-0 bg-transparent rounded-3xl overflow-visible flex items-center justify-center">
+        <div className="relative h-[400px] md:h-[500px] w-full perspective-1000">
+            <div className="absolute inset-0 bg-transparent rounded-3xl overflow-visible flex items-center justify-center transform hover:rotate-y-2 transition-transform duration-500">
                 {/* Main Hero Image */}
-                <div className="relative w-full h-full">
-                    <Image 
-                        src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80"
-                        alt="Pemilik Bisnis Sukses"
-                        fill
-                        className="object-cover rounded-3xl shadow-2xl z-10 relative"
-                    />
+                <div className="relative w-full h-full flex items-end justify-center">
+                     {/* Blue Circle Background (for transparent profile) */}
+                    <div className="absolute bottom-0 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-blue-600 rounded-full opacity-10 translate-y-10"></div>
+                    <div className="absolute bottom-0 w-[250px] h-[250px] md:w-[350px] md:h-[350px] bg-blue-100 rounded-full translate-y-5"></div>
+
+                    <div className="relative w-full h-full flex items-end justify-center z-10">
+                        <Image 
+                            src="/profile.png"
+                            alt="Founder RizDev"
+                            width={500}
+                            height={600}
+                            className="object-contain max-h-full drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                            priority
+                        />
+                    </div>
                     
                     {/* Floating Cards */}
                     <div className="absolute z-20 bg-white/90 backdrop-blur p-4 rounded-xl shadow-xl top-10 -right-4 md:-right-10 border border-white/50 animate-bounce-slow">
